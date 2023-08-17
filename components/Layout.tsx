@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
+import { Wallet } from './Wallet'
 
 type Props = {
   children?: ReactNode
@@ -15,11 +16,17 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <header>
-      <nav>
-        <Link href="/">Home</Link> | <Link href="/about">About</Link> |{' '}
-        <Link href="/users">Users List</Link> |{' '}
-        <a href="/api/users">Users API</a>
+      <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#333', padding: '1rem' }}>
+        <div style={{ fontSize: '1.4rem' }}>
+          <Link href="/" style={{ color: '#fff', marginRight: '1rem' }}>Home</Link>
+          <Link href="/about" style={{ color: '#fff', marginRight: '1rem' }}>About</Link>
+          <Link href="/users" style={{ color: '#fff', marginRight: '1rem' }}>Users List</Link>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <Wallet />
+        </div>
       </nav>
+      <hr />
     </header>
     {children}
     <footer>
