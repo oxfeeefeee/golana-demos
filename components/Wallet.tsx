@@ -13,38 +13,14 @@ import { clusterApiUrl } from '@solana/web3.js';
 require('@solana/wallet-adapter-react-ui/styles.css');
 
 export const Wallet: FC = () => {
+    // this is broken, todo: fix
     const [selectedNetwork, setSelectedNetwork] = useState(WalletAdapterNetwork.Devnet);
 
     const handleNetworkChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedNetwork(event.target.value as WalletAdapterNetwork);
     };
 
-    const endpoint = useMemo(() => clusterApiUrl(selectedNetwork), [selectedNetwork]);
-
-    const wallets = useMemo(
-        () => [
-            /**
-             * Wallets that implement either of these standards will be available automatically.
-             *
-             *   - Solana Mobile Stack Mobile Wallet Adapter Protocol
-             *     (https://github.com/solana-mobile/mobile-wallet-adapter)
-             *   - Solana Wallet Standard
-             *     (https://github.com/solana-labs/wallet-standard)
-             *
-             * If you wish to support a wallet that supports neither of those standards,
-             * instantiate its legacy wallet adapter here. Common legacy adapters can be found
-             * in the npm package `@solana/wallet-adapter-wallets`.
-             */
-            new UnsafeBurnerWalletAdapter(),
-        ],
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        [selectedNetwork]
-    );
-
     return (
-        <ConnectionProvider endpoint={endpoint}>
-            <WalletProvider wallets={wallets} autoConnect>
-                <WalletModalProvider>
                     <div className="flex w-full items-right justify-end">
                         <select
                             id="network-select"
@@ -60,9 +36,6 @@ export const Wallet: FC = () => {
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <WalletDisconnectButton className="px-4 py-2 text-lg font-medium border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
                     </div>
-                    {/* Your app's components go here, nested within the context providers. */}
-                </WalletModalProvider>
-            </WalletProvider>
-        </ConnectionProvider>
+
     );
 };
