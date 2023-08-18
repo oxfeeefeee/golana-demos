@@ -1,14 +1,21 @@
 import Link from 'next/link'
 import Layout from '../components/Layout'
 
-import { IDL, Helloworld } from '../utils/helloworld_idl.js';
-import Program from 'golana';
+import { useConnection, useAnchorWallet } from '@solana/wallet-adapter-react';
+import { IDL, Helloworld } from '../utils/helloworld_idl';
+import {Program, initProvider} from 'golana';
 
 const IndexPage = () => {
+  const wallet = useAnchorWallet();
+  const {connection} = useConnection();
+
   const handleIxInit = async () => {
     console.log('handleIxInit Button clicked!')
+  
+    initProvider(connection, wallet, "6ZjLk7jSFVVb2rxeoRf4ex3Q7zECi5SRTV4HbX55nNdP");
 
-    const hello = new Program<Helloworld>(IDL, await Program.createCodePubKeys("helloworld"));
+    const keys = await Program.createCodePubKeys("helloworld");
+    const hello = new Program<Helloworld>(IDL, keys);
     const userAccountSpace = 512;
 
     console.log('222handleIxInit Button clicked!')
