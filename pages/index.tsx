@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import Layout from '../components/Layout'
 
-import { IDL, Helloworld } from '../utils/helloworld_idl.ts';
-import Program from "golana";
+import { IDL, Helloworld } from '../utils/helloworld_idl.js';
+import Program from 'golana';
 
 const IndexPage = () => {
   const handleIxInit = async () => {
