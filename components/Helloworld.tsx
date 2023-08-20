@@ -12,7 +12,9 @@ export const HelloworldComp: FC = () => {
     const {connection} = useConnection();
     const provider = initProvider(connection, wallet, golanaLoaderID);
     const userAccountSpace = 512;
-    const userAccount = Keypair.generate();
+    const [userAccount] =  useState(() => {
+      return  Keypair.generate();
+    }); 
     const { publicKey } = useWallet();
 
     const [logs, setLogs] = useState<string>(''); // initialize logs state
@@ -38,8 +40,11 @@ export const HelloworldComp: FC = () => {
                 [ userAccount],
             );
 
-            const result = await provider.connection.getTransaction(trans);
-            setLogs(() => `CreateAccount transaction: ${result}\n`); // update logs state
+            const result = await provider.connection.getTransaction(trans,{
+              maxSupportedTransactionVersion: 0,
+            });
+            console.log(result)
+            setLogs(() => `CreateAccount transaction: ${JSON.stringify(result, null, 2)}\n`); // update logs state
     },[wallet, provider, userAccount]);
 
     const handleIxInit = useCallback(async () => {
@@ -61,7 +66,7 @@ export const HelloworldComp: FC = () => {
           .rpc({ skipPreflight: true });
         
           const result = await provider.connection.getTransaction(trans);
-          setLogs(() => `IxInit transaction: ${result}\n`); // update logs state
+          setLogs(() => `IxInit transaction: ${JSON.stringify(result, null, 2)}\n`); // update logs state
            console.log(result)
     }, [wallet, userAccount, provider]);
 
@@ -82,7 +87,7 @@ export const HelloworldComp: FC = () => {
         .rpc();
 
         const result = await provider.connection.getTransaction(trans);
-        setLogs(() => `IxGreet transaction: ${result}\n`); // update logs state
+        setLogs(() => `IxGreet transaction: ${JSON.stringify(result, null, 2)}\n`); // update logs state
         console.log(result)
       
   }, [wallet, userAccount]);
@@ -102,7 +107,7 @@ export const HelloworldComp: FC = () => {
         readOnly
         style={{ 
           width: '100%', 
-          height: '200px', 
+          height: '400px', 
           fontFamily: 'monospace',
           padding: '10px',
           borderRadius: '5px',
