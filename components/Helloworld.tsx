@@ -24,7 +24,7 @@ export const HelloworldComp: FC = () => {
     const [logs, setLogs] = useState<string>(''); // initialize logs state
 
     const [greetCount, setGreetCount] = useState<number>(0); // initialize greetCount state
-    const [yourName, setYourName] = useState<string>(''); // initialize yourName state
+    const [yourName, setYourName] = useState(''); // initialize yourName state
 
     const handleCreate = useCallback(async () => {
       const userAccountLamports = await connection.getMinimumBalanceForRentExemption(userAccountSpace);
@@ -70,7 +70,7 @@ export const HelloworldComp: FC = () => {
           const result = await provider.connection.getTransaction(trans);
           setLogs(() => `CreateAccount transaction: ${getLogStr(result)}\n`); // update logs state
            console.log(result)
-    }, [wallet, userAccount, provider]);
+    }, [wallet, userAccount, provider,greetCount]);
 
     const handleIxGreet = useCallback(async () => {
       const hello = await Program.create<Helloworld>(IDL, programAuth);
@@ -89,7 +89,7 @@ export const HelloworldComp: FC = () => {
         setLogs(() => `CreateAccount transaction: ${getLogStr(result)}\n`); // update logs state
         console.log(result)
       
-  }, [wallet, userAccount]);
+  }, [wallet, userAccount,yourName]);
 
   return (
     <div>
