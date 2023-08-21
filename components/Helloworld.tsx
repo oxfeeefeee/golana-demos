@@ -1,9 +1,13 @@
 import { useConnection, useAnchorWallet, useWallet } from '@solana/wallet-adapter-react';
 import { IDL, Helloworld } from '../utils/helloworld_idl';
 import {Program, initProvider} from 'golana';
-import {ComputeBudgetProgram, Keypair, PublicKey, SystemProgram, Transaction } from '@solana/web3.js';
+import {ComputeBudgetProgram, Keypair, PublicKey, SystemProgram, Transaction, VersionedTransactionResponse } from '@solana/web3.js';
 import React, { FC, useCallback, useState } from 'react';
 import BN from 'bn.js';
+
+function getLogStr(response?: VersionedTransactionResponse, somethingElse: string = ''): string {
+  return JSON.stringify(response?.meta?.logMessages ?? "Transaction failed, please retry", null, 2);
+}
 
 export const HelloworldComp: FC = () => {
     const golanaLoaderID = "6ZjLk7jSFVVb2rxeoRf4ex3Q7zECi5SRTV4HbX55nNdP";
@@ -47,7 +51,7 @@ export const HelloworldComp: FC = () => {
               maxSupportedTransactionVersion: 0,
             });
             console.log(result)
-            setLogs(() => `CreateAccount transaction: ${JSON.stringify(result.meta.logMessages, null, 2)}\n`); // update logs state
+            setLogs(() => `CreateAccount transaction: ${getLogStr(result)}\n`); // update logs state
     },[wallet, provider, userAccount]);
 
     const handleIxInit = useCallback(async () => {
@@ -64,7 +68,7 @@ export const HelloworldComp: FC = () => {
           .rpc({ skipPreflight: true });
         
           const result = await provider.connection.getTransaction(trans);
-          setLogs(() => `IxInit transaction: ${JSON.stringify(result.meta.logMessages, null, 2)}\n`); // update logs state
+          setLogs(() => `CreateAccount transaction: ${getLogStr(result)}\n`); // update logs state
            console.log(result)
     }, [wallet, userAccount, provider]);
 
@@ -82,7 +86,7 @@ export const HelloworldComp: FC = () => {
         .rpc();
 
         const result = await provider.connection.getTransaction(trans);
-        setLogs(() => `IxGreet transaction: ${JSON.stringify(result.meta.logMessages, null, 2)}\n`); // update logs state
+        setLogs(() => `CreateAccount transaction: ${getLogStr(result)}\n`); // update logs state
         console.log(result)
       
   }, [wallet, userAccount]);
