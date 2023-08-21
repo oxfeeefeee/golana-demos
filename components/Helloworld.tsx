@@ -19,6 +19,8 @@ export const HelloworldComp: FC = () => {
     const { publicKey } = useWallet();
     const [logs, setLogs] = useState<string>(''); // initialize logs state
 
+    const [greetCount, setGreetCount] = useState<number>(0); // initialize greetCount state
+
     const handleCreate = useCallback(async () => {
       const userAccountLamports = await connection.getMinimumBalanceForRentExemption(userAccountSpace);
 
@@ -49,7 +51,7 @@ export const HelloworldComp: FC = () => {
 
     const handleIxInit = useCallback(async () => {
         const hello = await Program.create<Helloworld>(IDL, programAuth);
-        const trans = await hello.methods.IxInit(new BN(222))
+        const trans = await hello.methods.IxInit(new BN(greetCount))
           .accounts({
               user: wallet.publicKey,
               userAccount: userAccount.publicKey,
@@ -90,6 +92,8 @@ export const HelloworldComp: FC = () => {
       <br/>
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <button className={`big-button bg-green-500 text-white hover:bg-green-700 ${!publicKey ? 'opacity-50 cursor-not-allowed' : ''}`} onClick={handleCreate} disabled={!publicKey} style={{ borderRadius: '5px', width: '200px', fontSize: '1.5rem', marginBottom: '20px' }}> Create Account </button>
+        <label htmlFor="greet-count" style={{ fontSize: '1.5rem', marginBottom: '10px' }}>Set Initial Greet Count:</label>
+        <input type="number" id="greet-count" value={greetCount} onChange={(e) => setGreetCount(parseInt(e.target.value))} style={{ borderRadius: '5px', width: '200px', fontSize: '1.5rem', marginBottom: '20px' }} />
         <button className={`big-button bg-green-500 text-white hover:bg-green-700 ${!publicKey ? 'opacity-50 cursor-not-allowed' : ''}`} onClick={handleIxInit} disabled={!publicKey} style={{ borderRadius: '5px', width: '200px', fontSize: '1.5rem', marginBottom: '20px' }}> Send IxInit </button>
         <button className={`big-button bg-green-500 text-white hover:bg-green-700 ${!publicKey ? 'opacity-50 cursor-not-allowed' : ''}`} onClick={handleIxGreet} disabled={!publicKey} style={{ borderRadius: '5px', width: '200px', fontSize: '1.5rem' }}> Send IxGreet </button>
       </div>

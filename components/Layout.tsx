@@ -19,8 +19,8 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
       <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#333', padding: '1rem' }}>
         <div style={{ fontSize: '1.4rem' }}>
           <Link href="/" style={{ color: '#fff', marginRight: '1rem' }}>Home</Link>
-          <Link href="/about" style={{ color: '#fff', marginRight: '1rem' }}>About</Link>
-          <Link href="/users" style={{ color: '#fff', marginRight: '1rem' }}>Users List</Link>
+          {/* <Link href="/about" style={{ color: '#fff', marginRight: '1rem' }}>About</Link>
+          <Link href="/users" style={{ color: '#fff', marginRight: '1rem' }}>Users List</Link> */}
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Wallet />
@@ -31,7 +31,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
     {children}
     <footer>
       <hr />
-      <span>I'm here to stay (Footer)</span>
+      <Link href="https://sol.goscript.dev" style={{ color: '#000', textDecoration: 'underline' }}> Go to Golana website </Link>
     </footer>
   </div>
 )
