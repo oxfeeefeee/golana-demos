@@ -51,7 +51,7 @@ export const HelloworldComp: FC = () => {
               maxSupportedTransactionVersion: 0,
             });
             console.log(result)
-            setLogs(() => `CreateAccount transaction: ${getLogStr(result)}\n`); // update logs state
+            setLogs(() => `Transaction logs: ${getLogStr(result)}\n`); // update logs state
     },[wallet, provider, userAccount]);
 
     const handleIxInit = useCallback(async () => {
@@ -68,7 +68,7 @@ export const HelloworldComp: FC = () => {
           .rpc({ skipPreflight: true });
         
           const result = await provider.connection.getTransaction(trans);
-          setLogs(() => `CreateAccount transaction: ${getLogStr(result)}\n`); // update logs state
+          setLogs(() => `Transaction logs: ${getLogStr(result)}\n`); // update logs state
            console.log(result)
     }, [wallet, userAccount, provider,greetCount]);
 
@@ -86,7 +86,7 @@ export const HelloworldComp: FC = () => {
         .rpc();
 
         const result = await provider.connection.getTransaction(trans);
-        setLogs(() => `CreateAccount transaction: ${getLogStr(result)}\n`); // update logs state
+        setLogs(() => `Transaction logs: ${getLogStr(result)}\n`); // update logs state
         console.log(result)
       
   }, [wallet, userAccount,yourName]);
