@@ -2348,7 +2348,7 @@
     "@wallet-standard/app" "^1.0.1"
     "@wallet-standard/base" "^1.0.1"
 
-"@solana/web3.js@*", "@solana/web3.js@^1.30.2", "@solana/web3.js@^1.36.0", "@solana/web3.js@^1.44.3", "@solana/web3.js@^1.5.0", "@solana/web3.js@^1.50.1", "@solana/web3.js@^1.58.0", "@solana/web3.js@^1.63.0", "@solana/web3.js@^1.63.1", "@solana/web3.js@^1.68.0", "@solana/web3.js@^1.73.3", "@solana/web3.js@^1.77.3", "@solana/web3.js@^1.78.4":
+"@solana/web3.js@*", "@solana/web3.js@^1.30.2", "@solana/web3.js@^1.36.0", "@solana/web3.js@^1.44.3", "@solana/web3.js@^1.5.0", "@solana/web3.js@^1.50.1", "@solana/web3.js@^1.58.0", "@solana/web3.js@^1.63.0", "@solana/web3.js@^1.63.1", "@solana/web3.js@^1.68.0", "@solana/web3.js@^1.77.3", "@solana/web3.js@^1.78.4":
   "integrity" "sha512-up5VG1dK+GPhykmuMIozJZBbVqpm77vbOG6/r5dS7NBGZonwHfTLdBbsYc3rjmaQ4DpCXUa3tUc4RZHRORvZrw=="
   "resolved" "https://registry.npmjs.org/@solana/web3.js/-/web3.js-1.78.4.tgz"
   "version" "1.78.4"
@@ -4604,13 +4604,13 @@
   "resolved" "https://registry.npmjs.org/globals/-/globals-11.12.0.tgz"
   "version" "11.12.0"
 
-"golana@^0.2.5":
-  "integrity" "sha512-1VmU29sWE97+q5ItnUy0jShefEMgWQkhfofJaMiteFl+bK+/D9omcC6I4zKB41FjyfIBZtP4xoS8AiMLBV6mZg=="
-  "resolved" "https://registry.npmjs.org/golana/-/golana-0.2.5.tgz"
-  "version" "0.2.5"
+"golana@^0.2.8":
+  "integrity" "sha512-uyyPydvDy9RE5H1ZUjCe5wGe30IN3xlHKf7UIL3CYUHw0jXkjgmVjd3hohcqCdLRntur86yy6aCGULk3dPRPVQ=="
+  "resolved" "https://registry.npmjs.org/golana/-/golana-0.2.8.tgz"
+  "version" "0.2.8"
   dependencies:
     "@project-serum/anchor" "^0.26.0"
-    "@solana/web3.js" "^1.73.3"
+    "@solana/web3.js" "^1.78.4"
     "bn.js" "^5.2.1"
     "crypto-hash" "^2.0.1"
 

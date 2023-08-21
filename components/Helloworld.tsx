@@ -5,18 +5,18 @@ import {ComputeBudgetProgram, Keypair, PublicKey, SystemProgram, Transaction } f
 import React, { FC, useCallback, useState } from 'react';
 import BN from 'bn.js';
 
-
 export const HelloworldComp: FC = () => {
     const golanaLoaderID = "6ZjLk7jSFVVb2rxeoRf4ex3Q7zECi5SRTV4HbX55nNdP";
+    const programAuth = "7iuukgrteZuquJB6ikGD9sPxpdZSze7QaLPywH3Zqa1s";
     const wallet = useAnchorWallet();
     const {connection} = useConnection();
     const provider = initProvider(connection, wallet, golanaLoaderID);
     const userAccountSpace = 512;
+
     const [userAccount] =  useState(() => {
       return  Keypair.generate();
     }); 
     const { publicKey } = useWallet();
-
     const [logs, setLogs] = useState<string>(''); // initialize logs state
 
     const handleCreate = useCallback(async () => {
@@ -44,16 +44,11 @@ export const HelloworldComp: FC = () => {
               maxSupportedTransactionVersion: 0,
             });
             console.log(result)
-            setLogs(() => `CreateAccount transaction: ${JSON.stringify(result, null, 2)}\n`); // update logs state
+            setLogs(() => `CreateAccount transaction: ${JSON.stringify(result.meta.logMessages, null, 2)}\n`); // update logs state
     },[wallet, provider, userAccount]);
 
     const handleIxInit = useCallback(async () => {
-        //const keys = await Program.createCodePubKeys("helloworld");
-        const keys = [new PublicKey("34henBtqcCeVPR9zDYWqzoQPNE1ZcY3EMMtqBAes8oDy"), new PublicKey("496MpituwusXhFfFH1ZChCH2ywP6U5P5WLJcWNDfLPuQ")];
-        const hello = new Program<Helloworld>(IDL, keys);
-        console.log(keys);
-        console.log(wallet.publicKey)
-
+        const hello = await Program.create<Helloworld>(IDL, programAuth);
         const trans = await hello.methods.IxInit(new BN(222))
           .accounts({
               user: wallet.publicKey,
@@ -66,15 +61,12 @@ export const HelloworldComp: FC = () => {
           .rpc({ skipPreflight: true });
         
           const result = await provider.connection.getTransaction(trans);
-          setLogs(() => `IxInit transaction: ${JSON.stringify(result, null, 2)}\n`); // update logs state
+          setLogs(() => `IxInit transaction: ${JSON.stringify(result.meta.logMessages, null, 2)}\n`); // update logs state
            console.log(result)
     }, [wallet, userAccount, provider]);
 
     const handleIxGreet = useCallback(async () => {
-      //const keys = await Program.createCodePubKeys("helloworld");
-      const keys = [new PublicKey("34henBtqcCeVPR9zDYWqzoQPNE1ZcY3EMMtqBAes8oDy"), new PublicKey("496MpituwusXhFfFH1ZChCH2ywP6U5P5WLJcWNDfLPuQ")];
-      const hello = new Program<Helloworld>(IDL, keys);
-
+      const hello = await Program.create<Helloworld>(IDL, programAuth);
       const trans = await hello.methods.IxGreet("best_chain_devs")
         .accounts({
             user: wallet.publicKey,
@@ -87,7 +79,7 @@ export const HelloworldComp: FC = () => {
         .rpc();
 
         const result = await provider.connection.getTransaction(trans);
-        setLogs(() => `IxGreet transaction: ${JSON.stringify(result, null, 2)}\n`); // update logs state
+        setLogs(() => `IxGreet transaction: ${JSON.stringify(result.meta.logMessages, null, 2)}\n`); // update logs state
         console.log(result)
       
   }, [wallet, userAccount]);
