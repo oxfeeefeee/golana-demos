@@ -1869,12 +1869,31 @@
     "@solana/wallet-adapter-base" "^0.9.17"
     "js-base64" "^3.7.2"
 
+"@solana/buffer-layout-utils@^0.2.0":
+  "integrity" "sha512-szG4sxgJGktbuZYDg2FfNmkMi0DYQoVjN2h7ta1W1hPrwzarcFLBq9UpX1UjNXsNpT9dn+chgprtWGioUAr4/g=="
+  "resolved" "https://registry.npmjs.org/@solana/buffer-layout-utils/-/buffer-layout-utils-0.2.0.tgz"
+  "version" "0.2.0"
+  dependencies:
+    "@solana/buffer-layout" "^4.0.0"
+    "@solana/web3.js" "^1.32.0"
+    "bigint-buffer" "^1.1.5"
+    "bignumber.js" "^9.0.1"
+
 "@solana/buffer-layout@^4.0.0":
   "integrity" "sha512-E1ImOIAD1tBZFRdjeM4/pzTiTApC0AOBGwyAMS4fwIodCWArzJ3DWdoh8cKxeFM2fElkxBh2Aqts1BPC373rHA=="
   "resolved" "https://registry.npmjs.org/@solana/buffer-layout/-/buffer-layout-4.0.1.tgz"
   "version" "4.0.1"
   dependencies:
     "buffer" "~6.0.3"
+
+"@solana/spl-token@^0.3.5":
+  "integrity" "sha512-ogwGDcunP9Lkj+9CODOWMiVJEdRtqHAtX2rWF62KxnnSWtMZtV9rDhTrZFshiyJmxDnRL/1nKE1yJHg4jjs3gg=="
+  "resolved" "https://registry.npmjs.org/@solana/spl-token/-/spl-token-0.3.8.tgz"
+  "version" "0.3.8"
+  dependencies:
+    "@solana/buffer-layout" "^4.0.0"
+    "@solana/buffer-layout-utils" "^0.2.0"
+    "buffer" "^6.0.3"
 
 "@solana/wallet-adapter-alpha@^0.1.10":
   "integrity" "sha512-TOUhDyUNSmp8bqeUueN0LPmurTAEmYm3PTrPGSnsq6JFeTzwTv5xZRygtCvULpBzCPZu/7AfIqh/TSoz4P92aw=="
@@ -2348,7 +2367,7 @@
     "@wallet-standard/app" "^1.0.1"
     "@wallet-standard/base" "^1.0.1"
 
-"@solana/web3.js@*", "@solana/web3.js@^1.30.2", "@solana/web3.js@^1.36.0", "@solana/web3.js@^1.44.3", "@solana/web3.js@^1.5.0", "@solana/web3.js@^1.50.1", "@solana/web3.js@^1.58.0", "@solana/web3.js@^1.63.0", "@solana/web3.js@^1.63.1", "@solana/web3.js@^1.68.0", "@solana/web3.js@^1.77.3", "@solana/web3.js@^1.78.4":
+"@solana/web3.js@*", "@solana/web3.js@^1.30.2", "@solana/web3.js@^1.32.0", "@solana/web3.js@^1.36.0", "@solana/web3.js@^1.44.3", "@solana/web3.js@^1.47.4", "@solana/web3.js@^1.5.0", "@solana/web3.js@^1.50.1", "@solana/web3.js@^1.58.0", "@solana/web3.js@^1.63.0", "@solana/web3.js@^1.63.1", "@solana/web3.js@^1.68.0", "@solana/web3.js@^1.77.3", "@solana/web3.js@^1.78.4":
   "integrity" "sha512-up5VG1dK+GPhykmuMIozJZBbVqpm77vbOG6/r5dS7NBGZonwHfTLdBbsYc3rjmaQ4DpCXUa3tUc4RZHRORvZrw=="
   "resolved" "https://registry.npmjs.org/@solana/web3.js/-/web3.js-1.78.4.tgz"
   "version" "1.78.4"
@@ -4604,10 +4623,10 @@
   "resolved" "https://registry.npmjs.org/globals/-/globals-11.12.0.tgz"
   "version" "11.12.0"
 
-"golana@^0.2.8":
-  "integrity" "sha512-uyyPydvDy9RE5H1ZUjCe5wGe30IN3xlHKf7UIL3CYUHw0jXkjgmVjd3hohcqCdLRntur86yy6aCGULk3dPRPVQ=="
-  "resolved" "https://registry.npmjs.org/golana/-/golana-0.2.8.tgz"
-  "version" "0.2.8"
+"golana@^0.2.9":
+  "integrity" "sha512-eDivmZFqn904G7HeF6raKyE9WEVy9luJyfo2fdyg+Jur+kvcWL9TEb7RL+J4QKQ7ah2VIuZzvrKLAqkLBH/tdw=="
+  "resolved" "https://registry.npmjs.org/golana/-/golana-0.2.9.tgz"
+  "version" "0.2.9"
   dependencies:
     "@project-serum/anchor" "^0.26.0"
     "@solana/web3.js" "^1.78.4"

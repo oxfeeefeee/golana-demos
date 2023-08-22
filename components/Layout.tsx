@@ -19,6 +19,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
       <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#333', padding: '1rem' }}>
         <div style={{ fontSize: '1.4rem' }}>
           <Link href="/" style={{ color: '#fff', marginRight: '1rem' }}>Home</Link>
+          <Link href="/swap" style={{ color: '#fff', marginRight: '1rem' }}>Swap</Link>
           <Link href="https://sol.goscript.dev" style={{ color: '#fff', textDecoration: 'underline' }}> Golana </Link>
           {/* <Link href="/about" style={{ color: '#fff', marginRight: '1rem' }}>About</Link>
           <Link href="/users" style={{ color: '#fff', marginRight: '1rem' }}>Users List</Link> */}
