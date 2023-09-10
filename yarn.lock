@@ -3396,6 +3396,11 @@
     "bs58" "^4.0.0"
     "text-encoding-utf-8" "^1.0.2"
 
+"borsh@^1.0.0":
+  "integrity" "sha512-fSVWzzemnyfF89EPwlUNsrS5swF5CrtiN4e+h0/lLf4dz2he4L3ndM20PS9wj7ICSkXJe/TQUHdaPTq15b1mNQ=="
+  "resolved" "https://registry.npmjs.org/borsh/-/borsh-1.0.0.tgz"
+  "version" "1.0.0"
+
 "bowser@^2.11.0":
   "integrity" "sha512-AlcaJBi/pqqJBIQ8U9Mcpc9i8Aqxn88Skv5d+xBX006BY5u8N3mGLHa5Lgppa7L/HfwgwLgZ6NYs+Ag6uUmJRA=="
   "resolved" "https://registry.npmjs.org/bowser/-/bowser-2.11.0.tgz"
@@ -4201,6 +4206,13 @@
   "resolved" "https://registry.npmjs.org/encodeurl/-/encodeurl-1.0.2.tgz"
   "version" "1.0.2"
 
+"encoding@^0.1.0", "encoding@^0.1.13":
+  "integrity" "sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A=="
+  "resolved" "https://registry.npmjs.org/encoding/-/encoding-0.1.13.tgz"
+  "version" "0.1.13"
+  dependencies:
+    "iconv-lite" "^0.6.2"
+
 "end-of-stream@^1.1.0", "end-of-stream@^1.4.1", "end-of-stream@^1.4.4":
   "integrity" "sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q=="
   "resolved" "https://registry.npmjs.org/end-of-stream/-/end-of-stream-1.4.4.tgz"
@@ -4623,14 +4635,15 @@
   "resolved" "https://registry.npmjs.org/globals/-/globals-11.12.0.tgz"
   "version" "11.12.0"
 
-"golana@^0.2.9":
-  "integrity" "sha512-eDivmZFqn904G7HeF6raKyE9WEVy9luJyfo2fdyg+Jur+kvcWL9TEb7RL+J4QKQ7ah2VIuZzvrKLAqkLBH/tdw=="
-  "resolved" "https://registry.npmjs.org/golana/-/golana-0.2.9.tgz"
-  "version" "0.2.9"
+"golana@^0.2.10":
+  "integrity" "sha512-M7Q+EEt7ahJ1srNyT/6XFxotcwsaaeFuowX9sOsE1u1luOxVf3mQ8HWYwsvx2tBz1zRzG7QwkrpBxpehg4gFng=="
+  "resolved" "https://registry.npmjs.org/golana/-/golana-0.2.10.tgz"
+  "version" "0.2.10"
   dependencies:
     "@project-serum/anchor" "^0.26.0"
     "@solana/web3.js" "^1.78.4"
     "bn.js" "^5.2.1"
+    "borsh" "^1.0.0"
     "crypto-hash" "^2.0.1"
 
 "gopd@^1.0.1":
@@ -4753,6 +4766,13 @@
   "version" "1.2.1"
   dependencies:
     "ms" "^2.0.0"
+
+"iconv-lite@^0.6.2":
+  "integrity" "sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw=="
+  "resolved" "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.6.3.tgz"
+  "version" "0.6.3"
+  dependencies:
+    "safer-buffer" ">= 2.1.2 < 3.0.0"
 
 "ieee754@^1.1.13", "ieee754@^1.2.1":
   "integrity" "sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA=="
@@ -6776,7 +6796,7 @@
   "resolved" "https://registry.npmjs.org/safe-stable-stringify/-/safe-stable-stringify-2.4.3.tgz"
   "version" "2.4.3"
 
-"safer-buffer@^2.1.0":
+"safer-buffer@^2.1.0", "safer-buffer@>= 2.1.2 < 3.0.0":
   "integrity" "sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg=="
   "resolved" "https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz"
   "version" "2.1.2"

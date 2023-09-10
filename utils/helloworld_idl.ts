@@ -18,8 +18,19 @@ export type Helloworld = {
       ],
       "args": [
         {
-          "name": "name",
-          "type": "string"
+          "name": "names",
+          "type": {
+            "vec": "string"
+          }
+        },
+        {
+          "name": "arrayTest",
+          "type": {
+            "array": [
+              "i64",
+              3
+            ]
+          }
         }
       ]
     },
@@ -28,12 +39,17 @@ export type Helloworld = {
       "accounts": [
         {
           "name": "user",
-          "isMut": false,
+          "isMut": true,
           "isSigner": true
         },
         {
           "name": "userAccount",
           "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
           "isSigner": false
         }
       ],
@@ -67,8 +83,19 @@ export const IDL: Helloworld = {
       ],
       "args": [
         {
-          "name": "name",
-          "type": "string"
+          "name": "names",
+          "type": {
+            "vec": "string"
+          }
+        },
+        {
+          "name": "arrayTest",
+          "type": {
+            "array": [
+              "i64",
+              3
+            ]
+          }
         }
       ]
     },
@@ -77,12 +104,17 @@ export const IDL: Helloworld = {
       "accounts": [
         {
           "name": "user",
-          "isMut": false,
+          "isMut": true,
           "isSigner": true
         },
         {
           "name": "userAccount",
           "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
           "isSigner": false
         }
       ],

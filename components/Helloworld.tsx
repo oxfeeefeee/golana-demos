@@ -10,7 +10,7 @@ function getLogStr(response?: VersionedTransactionResponse, somethingElse: strin
 }
 
 export const HelloworldComp: FC = () => {
-    const golanaLoaderID = "6ZjLk7jSFVVb2rxeoRf4ex3Q7zECi5SRTV4HbX55nNdP";
+    const golanaLoaderID = "HE7R2wfjpgjHnxfA9bS6fSLJzm7nucFfBXQhhxTCWMZs";
     const programAuth = "7iuukgrteZuquJB6ikGD9sPxpdZSze7QaLPywH3Zqa1s";
     const wallet = useAnchorWallet();
     const {connection} = useConnection();
@@ -26,33 +26,33 @@ export const HelloworldComp: FC = () => {
     const [greetCount, setGreetCount] = useState<number>(0); // initialize greetCount state
     const [yourName, setYourName] = useState(''); // initialize yourName state
 
-    const handleCreate = useCallback(async () => {
-      const userAccountLamports = await connection.getMinimumBalanceForRentExemption(userAccountSpace);
+    // const handleCreate = useCallback(async () => {
+    //   const userAccountLamports = await connection.getMinimumBalanceForRentExemption(userAccountSpace);
 
-            // Create the user account
-            const trans = await provider.sendAndConfirm(
-                (() => {
-                    const tx = new Transaction();
-                    tx.add(
-                        SystemProgram.createAccount({
-                            fromPubkey: wallet.publicKey,
-                            newAccountPubkey: userAccount.publicKey,
-                            lamports: userAccountLamports,
-                            space: userAccountSpace,
-                            programId: new PublicKey(golanaLoaderID),
-                        })
-                    );
-                    return tx;
-                })(),
-                [ userAccount],
-            );
+    //         // Create the user account
+    //         const trans = await provider.sendAndConfirm(
+    //             (() => {
+    //                 const tx = new Transaction();
+    //                 tx.add(
+    //                     SystemProgram.createAccount({
+    //                         fromPubkey: wallet.publicKey,
+    //                         newAccountPubkey: userAccount.publicKey,
+    //                         lamports: userAccountLamports,
+    //                         space: userAccountSpace,
+    //                         programId: new PublicKey(golanaLoaderID),
+    //                     })
+    //                 );
+    //                 return tx;
+    //             })(),
+    //             [ userAccount],
+    //         );
 
-            const result = await provider.connection.getTransaction(trans,{
-              maxSupportedTransactionVersion: 0,
-            });
-            console.log(result)
-            setLogs(() => `Transaction logs: ${getLogStr(result)}\n`); // update logs state
-    },[wallet, provider, userAccount]);
+    //         const result = await provider.connection.getTransaction(trans,{
+    //           maxSupportedTransactionVersion: 0,
+    //         });
+    //         console.log(result)
+    //         setLogs(() => `Transaction logs: ${getLogStr(result)}\n`); // update logs state
+    // },[wallet, provider, userAccount]);
 
     const handleIxInit = useCallback(async () => {
         const hello = await Program.create<Helloworld>(IDL, programAuth);
@@ -60,11 +60,9 @@ export const HelloworldComp: FC = () => {
           .accounts({
               user: wallet.publicKey,
               userAccount: userAccount.publicKey,
+              systemProgram: SystemProgram.programId,
           })
-          .preInstructions([
-              ComputeBudgetProgram.requestHeapFrame({ bytes: 256 * 1024 }),
-              ComputeBudgetProgram.setComputeUnitLimit({ units: 1400000 })
-          ])
+          .signers([userAccount]) 
           .rpc({ skipPreflight: true });
         
           const result = await provider.connection.getTransaction(trans);
@@ -74,16 +72,12 @@ export const HelloworldComp: FC = () => {
 
     const handleIxGreet = useCallback(async () => {
       const hello = await Program.create<Helloworld>(IDL, programAuth);
-      const trans = await hello.methods.IxGreet(yourName)
+      const trans = await hello.methods.IxGreet([yourName, "and-your-friends"], [new BN(1),new BN(2),new BN(3)])
         .accounts({
             user: wallet.publicKey,
             userAccount: userAccount.publicKey,
         })
-        .preInstructions([
-            ComputeBudgetProgram.requestHeapFrame({ bytes: 256 * 1024 }),
-            ComputeBudgetProgram.setComputeUnitLimit({ units: 1400000 })
-        ])
-        .rpc();
+        .rpc({ skipPreflight: true });
 
         const result = await provider.connection.getTransaction(trans);
         setLogs(() => `Transaction logs: ${getLogStr(result)}\n`); // update logs state
@@ -95,10 +89,9 @@ export const HelloworldComp: FC = () => {
     <div>
       <h1 style={{ fontSize: '2rem' }}>Golana: Hello World 👋</h1>
       <p style={{ fontSize: '1.0rem' }}>This is a simple example of how to use the Golana SDK.</p>
-      <p style={{ fontSize: '1.0rem' }}>1. Create an account to store data onchain.</p>
-      <p style={{ fontSize: '1.0rem' }}>2. Initialize the account with an initial greet count.</p>
-      <p style={{ fontSize: '1.0rem' }}>3. Send a greet transaction to get a greeting back and increment the greet count.</p>
-      <p style={{ fontSize: '1.0rem' }}>4. View the logs below to see the transaction details.</p>
+      <p style={{ fontSize: '1.0rem' }}>1. Create an account to store data onchain and initialize the account with an initial greet count.</p>
+      <p style={{ fontSize: '1.0rem' }}>2. Send a greet transaction to get a greeting back and increment the greet count.</p>
+      <p style={{ fontSize: '1.0rem' }}>3. View the logs below to see the transaction details.</p>
       <br/>
       <p style={{ fontSize: '1.0rem' }}>Note: To use this example you need to:</p>
       <p style={{ fontSize: '1.0rem' }}> -- Set your solana wallet to the testnet.</p>
@@ -106,7 +99,7 @@ export const HelloworldComp: FC = () => {
       <p style={{ fontSize: '1.0rem' }}> -- Connect your wallet (always use a burner wallet to be safe)</p>
       <br/>
       <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <button className={`big-button bg-green-500 text-white hover:bg-green-700 ${!publicKey ? 'opacity-50 cursor-not-allowed' : ''}`} onClick={handleCreate} disabled={!publicKey} style={{ borderRadius: '5px', width: '200px', fontSize: '1.5rem', marginBottom: '20px' }}> Create Account </button>
+        {/* <button className={`big-button bg-green-500 text-white hover:bg-green-700 ${!publicKey ? 'opacity-50 cursor-not-allowed' : ''}`} onClick={handleCreate} disabled={!publicKey} style={{ borderRadius: '5px', width: '200px', fontSize: '1.5rem', marginBottom: '20px' }}> Create Account </button> */}
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
           <label htmlFor="greet-count" style={{ fontSize: '1.5rem', marginRight: '10px' }}>Set Initial Greet Count:</label>
           <input type="number" id="greet-count" value={greetCount} onChange={(e) => setGreetCount(parseInt(e.target.value))} style={{ borderRadius: '5px', width: '200px', fontSize: '1.5rem', backgroundColor: '#f5f5f5', border: '1px solid #ccc', padding: '5px' }} />
