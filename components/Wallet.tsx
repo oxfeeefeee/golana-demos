@@ -21,7 +21,7 @@ export const Wallet: FC = () => {
 
     return (
                     <div className="flex w-full items-right justify-end">
-                        <select
+                        {/* <select
                             id="network-select"
                             value={selectedNetwork}
                             onChange={handleNetworkChange}
@@ -30,7 +30,7 @@ export const Wallet: FC = () => {
                             <option value={WalletAdapterNetwork.Testnet}>Testnet</option>
                             <option value={WalletAdapterNetwork.Devnet}>Devnet</option>
                             <option value={WalletAdapterNetwork.Mainnet}>Mainnet Beta</option>
-                        </select>
+                        </select> */}
                         <WalletMultiButton className="px-4 py-2 text-lg font-medium border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <WalletDisconnectButton className="px-4 py-2 text-lg font-medium border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />

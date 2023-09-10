@@ -90,11 +90,6 @@ export type Swap = {
           "name": "tokenProgram",
           "isMut": false,
           "isSigner": false
-        },
-        {
-          "name": "rent",
-          "isMut": false,
-          "isSigner": false
         }
       ],
       "args": [
@@ -158,7 +153,7 @@ export type Swap = {
         },
         {
           "name": "poolInfo",
-          "isMut": true,
+          "isMut": false,
           "isSigner": false
         },
         {
@@ -227,7 +222,7 @@ export type Swap = {
         },
         {
           "name": "poolInfo",
-          "isMut": true,
+          "isMut": false,
           "isSigner": false
         },
         {
@@ -301,7 +296,7 @@ export type Swap = {
         },
         {
           "name": "poolInfo",
-          "isMut": true,
+          "isMut": false,
           "isSigner": false
         },
         {
@@ -416,11 +411,6 @@ export const IDL: Swap = {
           "name": "tokenProgram",
           "isMut": false,
           "isSigner": false
-        },
-        {
-          "name": "rent",
-          "isMut": false,
-          "isSigner": false
         }
       ],
       "args": [
@@ -484,7 +474,7 @@ export const IDL: Swap = {
         },
         {
           "name": "poolInfo",
-          "isMut": true,
+          "isMut": false,
           "isSigner": false
         },
         {
@@ -553,7 +543,7 @@ export const IDL: Swap = {
         },
         {
           "name": "poolInfo",
-          "isMut": true,
+          "isMut": false,
           "isSigner": false
         },
         {
@@ -627,7 +617,7 @@ export const IDL: Swap = {
         },
         {
           "name": "poolInfo",
-          "isMut": true,
+          "isMut": false,
           "isSigner": false
         },
         {

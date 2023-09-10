@@ -11,7 +11,7 @@ function getLogStr(response?: VersionedTransactionResponse, somethingElse: strin
   }
 
 export const SwapComp: FC = () => {
-    const golanaLoaderID = "6ZjLk7jSFVVb2rxeoRf4ex3Q7zECi5SRTV4HbX55nNdP";
+    const golanaLoaderID = "HE7R2wfjpgjHnxfA9bS6fSLJzm7nucFfBXQhhxTCWMZs";
     const programAuth = "7iuukgrteZuquJB6ikGD9sPxpdZSze7QaLPywH3Zqa1s";
     const wallet = useAnchorWallet();
     const {connection} = useConnection();

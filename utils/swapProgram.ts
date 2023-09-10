@@ -212,12 +212,7 @@ export class SwapProgram {
                 poolInfo: this.infoAccount.publicKey,
                 systemProgram: SystemProgram.programId,
                 tokenProgram: TOKEN_PROGRAM_ID,
-                rent: SYSVAR_RENT_PUBKEY,
             })
-            .preInstructions([
-                ComputeBudgetProgram.requestHeapFrame({ bytes: 256 * 1024 }),
-                ComputeBudgetProgram.setComputeUnitLimit({ units: 1400000 }),
-            ])
             .signers([this.vaultA, this.vaultB])
             .rpc();
     }
@@ -240,10 +235,6 @@ export class SwapProgram {
                 tokenProgram: TOKEN_PROGRAM_ID,
                 associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
             })
-            .preInstructions([
-                ComputeBudgetProgram.requestHeapFrame({ bytes: 256 * 1024 }),
-                ComputeBudgetProgram.setComputeUnitLimit({ units: 1400000 }),
-            ])
             .signers([])
             .rpc();
     }
@@ -261,10 +252,6 @@ export class SwapProgram {
                 poolInfo: this.infoAccount.publicKey,
                 tokenProgram: TOKEN_PROGRAM_ID,
             })
-            .preInstructions([
-                ComputeBudgetProgram.requestHeapFrame({ bytes: 256 * 1024 }),
-                ComputeBudgetProgram.setComputeUnitLimit({ units: 1400000 }),
-            ])
             .signers([])
             .rpc();
     }
@@ -285,10 +272,6 @@ export class SwapProgram {
                 poolInfo: this.infoAccount.publicKey,
                 tokenProgram: TOKEN_PROGRAM_ID,
             })
-            .preInstructions([
-                ComputeBudgetProgram.requestHeapFrame({ bytes: 256 * 1024 }),
-                ComputeBudgetProgram.setComputeUnitLimit({ units: 1400000 }),
-            ])
             .signers([])
             .rpc();
     }
@@ -305,10 +288,6 @@ export class SwapProgram {
                 systemProgram: SystemProgram.programId,
                 tokenProgram: TOKEN_PROGRAM_ID,
             })
-            .preInstructions([
-                ComputeBudgetProgram.requestHeapFrame({ bytes: 256 * 1024 }),
-                ComputeBudgetProgram.setComputeUnitLimit({ units: 1400000 }),
-            ])
             .signers([])
             .rpc();
     }
