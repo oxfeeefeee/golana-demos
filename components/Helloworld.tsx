@@ -102,6 +102,7 @@ export const HelloworldComp: FC = () => {
     <div>
       <h1 style={{ fontSize: '2rem' }}>Golana: Hello World 👋</h1>
       <p style={{ fontSize: '1.0rem' }}>This is a simple example of how to use the Golana SDK.</p>
+      <p style={{ fontSize: '1.5rem' }}>0. Set your solana wallet to the testnet, and connect your wallet.</p>
       <p style={{ fontSize: '1.0rem' }}>1. Create an account to store data onchain and initialize the account with an initial greet count.</p>
       <p style={{ fontSize: '1.0rem' }}>2. Send a greet transaction to get a greeting back and increment the greet count.</p>
       <p style={{ fontSize: '1.0rem' }}>3. View the logs below to see the transaction details.</p>
