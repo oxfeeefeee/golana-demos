@@ -35,6 +35,8 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
       <hr />
       <Link href="https://github.com/oxfeeefeee/golana-demos" style={{ color: '#000', textDecoration: 'underline' }}> Source of this website </Link>
       <br/>
+      <Link href="https://github.com/oxfeeefeee/golana/tree/main/examples" style={{ color: '#000', textDecoration: 'underline' }}> On chain program (look for *.go) </Link>
+      <br/>
       <Link href="https://sol.goscript.dev" style={{ color: '#000', textDecoration: 'underline' }}> Golana website </Link>
     </footer>
   </div>
