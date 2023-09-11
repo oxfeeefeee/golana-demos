@@ -66,6 +66,9 @@ export const SwapComp: FC = () => {
 
     return (
     <div>
+      <h1 style={{ fontSize: '2rem' }}>Uniswap V2 style swap demo</h1>
+      <p style={{ fontSize: '1.0rem' }}>Click though the buttons below to try out the demo, the numbers are preset in the code. Take a look at the <a href="https://github.com/oxfeeefeee/golana-demos/blob/main/utils/swapProgram.ts" target="_blank" rel="noopener noreferrer" style={{ color: 'green' }}>source code</a> to see what's going on.</p>
+      <p style={{ fontSize: '1.0rem' }}>It takes quite a while to get the transactions confirmed, please be patient. And you can check the console for more logs.</p>
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <button className={`big-button bg-green-500 text-white hover:bg-green-700 ${!publicKey ? 'opacity-50 cursor-not-allowed' : ''}`} onClick={handleInit} disabled={!publicKey} style={{ borderRadius: '5px', width: '200px', fontSize: '1.5rem', marginBottom: '20px' }}> Init </button>
         <button className={`big-button bg-green-500 text-white hover:bg-green-700 ${!publicKey ? 'opacity-50 cursor-not-allowed' : ''}`} onClick={handleCreatePool} disabled={!publicKey} style={{ borderRadius: '5px', width: '200px', fontSize: '1.5rem', marginBottom: '20px' }}> Create Pool </button>

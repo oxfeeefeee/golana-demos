@@ -1,12 +1,23 @@
 import { useConnection, useAnchorWallet, useWallet } from '@solana/wallet-adapter-react';
 import { IDL, Helloworld } from '../utils/helloworld_idl';
-import {Program, initProvider} from 'golana';
+import {AnchorProvider, Program, initProvider} from 'golana';
 import {ComputeBudgetProgram, Keypair, PublicKey, SystemProgram, Transaction, VersionedTransactionResponse } from '@solana/web3.js';
 import React, { FC, useCallback, useState } from 'react';
 import BN from 'bn.js';
 
 function getLogStr(response?: VersionedTransactionResponse, somethingElse: string = ''): string {
   return JSON.stringify(response?.meta?.logMessages ?? "Transaction failed, please retry", null, 2);
+}
+
+async function  aridrop(provider: AnchorProvider, key: PublicKey) {
+  const latestBlockHash = await provider.connection.getLatestBlockhash();
+  const airdrop = await provider.connection.requestAirdrop(key, 100000000);
+  await provider.connection.confirmTransaction({
+      blockhash: latestBlockHash.blockhash,
+      lastValidBlockHeight: latestBlockHash.lastValidBlockHeight,
+      signature: airdrop,
+  });
+  console.log("Airdrop to payer done: ", key.toBase58());
 }
 
 export const HelloworldComp: FC = () => {
@@ -55,6 +66,8 @@ export const HelloworldComp: FC = () => {
     // },[wallet, provider, userAccount]);
 
     const handleIxInit = useCallback(async () => {
+        await aridrop(provider, wallet.publicKey);
+
         const hello = await Program.create<Helloworld>(IDL, programAuth);
         const trans = await hello.methods.IxInit(new BN(greetCount))
           .accounts({
@@ -92,12 +105,6 @@ export const HelloworldComp: FC = () => {
       <p style={{ fontSize: '1.0rem' }}>1. Create an account to store data onchain and initialize the account with an initial greet count.</p>
       <p style={{ fontSize: '1.0rem' }}>2. Send a greet transaction to get a greeting back and increment the greet count.</p>
       <p style={{ fontSize: '1.0rem' }}>3. View the logs below to see the transaction details.</p>
-      <br/>
-      <p style={{ fontSize: '1.0rem' }}>Note: To use this example you need to:</p>
-      <p style={{ fontSize: '1.0rem' }}> -- Set your solana wallet to the testnet.</p>
-      <p style={{ fontSize: '1.0rem' }}> -- Get some testnet SOL from <a href="https://solfaucet.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'green' }}>solfaucet.com.</a></p>
-      <p style={{ fontSize: '1.0rem' }}> -- Connect your wallet (always use a burner wallet to be safe)</p>
-      <br/>
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         {/* <button className={`big-button bg-green-500 text-white hover:bg-green-700 ${!publicKey ? 'opacity-50 cursor-not-allowed' : ''}`} onClick={handleCreate} disabled={!publicKey} style={{ borderRadius: '5px', width: '200px', fontSize: '1.5rem', marginBottom: '20px' }}> Create Account </button> */}
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
