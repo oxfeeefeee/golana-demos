@@ -79,7 +79,7 @@ export type Swap = {
         {
           "name": "poolInfo",
           "isMut": true,
-          "isSigner": false
+          "isSigner": true
         },
         {
           "name": "systemProgram",
@@ -399,7 +399,7 @@ export const IDL: Swap = {
         {
           "name": "poolInfo",
           "isMut": true,
-          "isSigner": false
+          "isSigner": true
         },
         {
           "name": "systemProgram",

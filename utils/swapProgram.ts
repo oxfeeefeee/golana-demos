@@ -5,8 +5,6 @@ import {AnchorProvider,Program, initProvider} from 'golana';
 import { IDL, Swap } from './swap_idl';
 
 export class SwapProgram {
-    private static infoAccountSpace = 512;
-
     private program: Program<Swap>;
 
     private infoAccount: Keypair;
@@ -65,26 +63,6 @@ export class SwapProgram {
 
             console.log("Airdrop to payer done: ", payer.publicKey.toBase58());
         }
-
-        const infoAccountLamports = await provider.connection.getMinimumBalanceForRentExemption(this.infoAccountSpace);
-        await provider.sendAndConfirm(
-            (() => {
-                const tx = new Transaction();
-                tx.add(
-                    SystemProgram.createAccount({
-                        fromPubkey: payer.publicKey,
-                        newAccountPubkey: swapProgram.infoAccount.publicKey,
-                        lamports: infoAccountLamports,
-                        space: this.infoAccountSpace,
-                        programId: swapProgram.program.golanaLoader.programId,
-                    })
-                );
-                return tx;
-            })(),
-            [payer, swapProgram.infoAccount],
-            { commitment: 'confirmed' },
-        );
-        console.log("Create info account done");
         
         // Create mintA if not provided
         if (needNewMintA) {
@@ -213,7 +191,7 @@ export class SwapProgram {
                 systemProgram: SystemProgram.programId,
                 tokenProgram: TOKEN_PROGRAM_ID,
             })
-            .signers([this.vaultA, this.vaultB])
+            .signers([this.vaultA, this.vaultB, this.infoAccount])
             .rpc();
     }
 
