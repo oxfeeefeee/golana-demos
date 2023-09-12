@@ -237,12 +237,16 @@ export type Swap = {
       ],
       "args": [
         {
-          "name": "amountA",
+          "name": "offeredAmount",
           "type": "u64"
         },
         {
-          "name": "expectedAmountB",
+          "name": "expectedAmount",
           "type": "u64"
+        },
+        {
+          "name": "inverse",
+          "type": "bool"
         },
         {
           "name": "vaultAuthBump",
@@ -557,12 +561,16 @@ export const IDL: Swap = {
       ],
       "args": [
         {
-          "name": "amountA",
+          "name": "offeredAmount",
           "type": "u64"
         },
         {
-          "name": "expectedAmountB",
+          "name": "expectedAmount",
           "type": "u64"
+        },
+        {
+          "name": "inverse",
+          "type": "bool"
         },
         {
           "name": "vaultAuthBump",

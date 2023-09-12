@@ -219,7 +219,7 @@ export class SwapProgram {
 
     public async IxTrade(amountA: BN, amountB: BN): Promise<string> {
         return await this.program.methods
-            .IxTrade(amountA, amountB, this.vault_authority_bump)
+            .IxTrade(amountA, amountB, false, this.vault_authority_bump)
             .accounts({
                 trader: this.trader,
                 tokenA: this.traderTokenAccountA.address,

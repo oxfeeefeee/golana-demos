@@ -6,7 +6,7 @@ import React, { FC, useCallback, useState } from 'react';
 import BN from 'bn.js';
 
 function getLogStr(response?: VersionedTransactionResponse, somethingElse: string = ''): string {
-  return JSON.stringify(response?.meta?.logMessages ?? "Transaction failed, please retry", null, 2);
+  return JSON.stringify(response?.meta?.logMessages ?? "Failed to get transaction log, it may or may not have failed", null, 2);
 }
 
 async function  aridrop(provider: AnchorProvider, key: PublicKey) {
