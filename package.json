@@ -15,7 +15,7 @@
     "@solana/web3.js": "^1.78.4",
     "bn.js": "^5.2.1",
     "encoding": "^0.1.13",
-    "golana": "^0.2.10",
+    "golana": "^0.2.11",
     "next": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

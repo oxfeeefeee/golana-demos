@@ -31,6 +31,14 @@ export type Helloworld = {
               3
             ]
           }
+        },
+        {
+          "name": "buffer",
+          "type": "bytes"
+        },
+        {
+          "name": "pk",
+          "type": "publicKey"
         }
       ]
     },
@@ -96,6 +104,14 @@ export const IDL: Helloworld = {
               3
             ]
           }
+        },
+        {
+          "name": "buffer",
+          "type": "bytes"
+        },
+        {
+          "name": "pk",
+          "type": "publicKey"
         }
       ]
     },

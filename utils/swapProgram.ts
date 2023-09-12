@@ -202,7 +202,7 @@ export class SwapProgram {
 
     public async IxCreatePool(minLiqudity: BN = new BN(10000), fee: BN = new BN(100)): Promise<string> {
         return await this.program.methods
-            .IxCreatePool(minLiqudity, fee)
+            .IxCreatePool(this.mintLP, minLiqudity, fee)
             .accounts({
                 creator: this.creator,
                 mintA: this.mintA,
@@ -222,8 +222,8 @@ export class SwapProgram {
             .IxDeposit(amountA, amountB, this.lp_token_mint_auth_bump)
             .accounts({
                 depositor: this.depositor,
-                mintLiquidity:this. mintLP,
-                mintLpAuth: this.lp_token_mint_auth_pda,
+                lpMint:this. mintLP,
+                lpMintAuth: this.lp_token_mint_auth_pda,
                 tokenA: this.depositorTokenAccountA.address,
                 tokenB: this.depositorTokenAccountB.address,
                 tokenLiquidity: this.depositorTokenAccountLP.address,
@@ -261,8 +261,7 @@ export class SwapProgram {
             .IxWithdraw(amount, this.vault_authority_bump)
             .accounts({
                 depositor: this.depositor,
-                mintLiquidity: this.mintLP,
-                mintLpAuth: this.lp_token_mint_auth_pda,
+                lpMint: this.mintLP,
                 tokenA: this.depositorTokenAccountA.address,
                 tokenB: this.depositorTokenAccountB.address,
                 tokenLiquidity: this.depositorTokenAccountLP.address,

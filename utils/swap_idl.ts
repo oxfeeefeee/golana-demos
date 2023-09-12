@@ -94,6 +94,10 @@ export type Swap = {
       ],
       "args": [
         {
+          "name": "lpMint",
+          "type": "publicKey"
+        },
+        {
           "name": "minLiquidity",
           "type": "u64"
         },
@@ -112,12 +116,12 @@ export type Swap = {
           "isSigner": true
         },
         {
-          "name": "mintLiquidity",
+          "name": "lpMint",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "mintLpAuth",
+          "name": "lpMintAuth",
           "isMut": false,
           "isSigner": false
         },
@@ -255,13 +259,8 @@ export type Swap = {
           "isSigner": true
         },
         {
-          "name": "mintLiquidity",
+          "name": "lpMint",
           "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "mintLpAuth",
-          "isMut": false,
           "isSigner": false
         },
         {
@@ -415,6 +414,10 @@ export const IDL: Swap = {
       ],
       "args": [
         {
+          "name": "lpMint",
+          "type": "publicKey"
+        },
+        {
           "name": "minLiquidity",
           "type": "u64"
         },
@@ -433,12 +436,12 @@ export const IDL: Swap = {
           "isSigner": true
         },
         {
-          "name": "mintLiquidity",
+          "name": "lpMint",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "mintLpAuth",
+          "name": "lpMintAuth",
           "isMut": false,
           "isSigner": false
         },
@@ -576,13 +579,8 @@ export const IDL: Swap = {
           "isSigner": true
         },
         {
-          "name": "mintLiquidity",
+          "name": "lpMint",
           "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "mintLpAuth",
-          "isMut": false,
           "isSigner": false
         },
         {

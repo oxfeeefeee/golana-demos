@@ -85,7 +85,7 @@ export const HelloworldComp: FC = () => {
 
     const handleIxGreet = useCallback(async () => {
       const hello = await Program.create<Helloworld>(IDL, programAuth);
-      const trans = await hello.methods.IxGreet([yourName, "and-your-friends"], [new BN(1),new BN(2),new BN(3)])
+      const trans = await hello.methods.IxGreet([yourName, "and-your-friends"], [new BN(1),new BN(2),new BN(3)], Buffer.from("xxx"), wallet.publicKey) 
         .accounts({
             user: wallet.publicKey,
             userAccount: userAccount.publicKey,
